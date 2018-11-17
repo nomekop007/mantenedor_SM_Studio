@@ -27,56 +27,25 @@
               <div class="form-group col-md-6">
                         <label for="tipo_plano">
                             Tipo de plano
-                        </label>
-                         <select class="form-control" id="tipo_plano" name="tipo_plano">
-                            <option value="Plano General">
-                                Plano General
-                            </option>
-                            <option value="Plano Figura">
-                                Plano Figura
-                            </option>
-                            <option value="Plano Americano o ¾">
-                                Plano Americano o ¾
-                            </option>
-                            <option value="Plano Medio">
-                                Plano Medio
-                            </option>
-                            <option value="Plano Medio Corto">
-                                Plano Medio Corto
-                            </option>
-                            <option value="Primer Plano">
-                                Primer Plano
-                            </option>
-                            <option value="Primerísimo Primer Plano">
-                                Primerísimo Primer Plano
-                            </option>
-                            <option value="Plano Detalle">
-                                Plano Detalle
-                            </option>
-                            <option value="Plano Cenital">
-                                Plano Cenital
-                            </option>
-                            <option value="Plano Picado">
-                                Plano Picado
-                            </option>
-                            <option value="Plano Nadir">
-                                Plano Nadir
-                            </option>
-                            <option value="Plano Contrapicado">
-                                Plano Contrapicado
-                            </option>
-                            <option value="Plano Escorzo">
-                                Plano Escorzo
-                            </option>
-                            <option value="Plano Perfil">
-                                Plano Perfil
-                            </option>
-                            <option value="Plano Frontal">
-                                Plano Frontal
-                            </option>
-                            <option value="Plano Holandés">
-                                Plano Holandés
-                            </option>
+                        </label><br>
+                         <select class=" select form-control-plaintext" id="tipo_plano" name="tipo_plano">
+                            <option></option>
+                            <option value="Plano General">Plano General</option>
+                            <option value="Plano Figura">Plano Figura</option>
+                            <option value="Plano Americano o ¾">Plano Americano o ¾</option>
+                            <option value="Plano Medio">Plano Medio</option>
+                            <option value="Plano Medio Corto">Plano Medio Corto</option>
+                            <option value="Primer Plano">Primer Plano</option>
+                            <option value="Primerísimo Primer Plano">Primerísimo Primer Plano</option>
+                            <option value="Plano Detalle">Plano Detalle</option>
+                            <option value="Plano Cenital">Plano Cenital</option>
+                            <option value="Plano Picado">Plano Picado</option>
+                            <option value="Plano Nadir">Plano Nadir</option>
+                            <option value="Plano Contrapicado">Plano Contrapicado</option>
+                            <option value="Plano Escorzo">Plano Escorzo</option>
+                            <option value="Plano Perfil">Plano Perfil</option>
+                            <option value="Plano Frontal">Plano Frontal</option>
+                            <option value="Plano Holandés">Plano Holandés</option>
                         </select>
                     </div>
 
@@ -113,7 +82,7 @@
 
 <!-- tabla -->
 <table class="table mi-dataTable text-center">
-                <thead class="thead-dark">
+                <thead class="thead-dark ">
                     <tr>
                         <th scope="col">
                             ID
@@ -128,7 +97,7 @@
                             autor
                         </th>
                         <th scope="col">
-                            tipo plano
+                            tipo de plano
                         </th>
                         <th scope="col">
                             archivo
@@ -144,13 +113,15 @@
                         <td>{{ $b->id }}</td>
                         <td>{{ $b->nombre }}</td>
                         <td> 
-                    <a class="btn-comentario" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}">
+                    <a class="btn-descripcion" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}">
                         <i class="far fa-eye"></i></i>
                     </a>
                         </td>
                         <td>{{ $b->autor }}</td>
                         <td>{{ $b->tipo_plano }}</td>
-                        <td>{{ $b->archivo }}</td>
+                        <td>
+                          <a data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-file-image color"></i></a>
+                        </td>
                         <td>
             <button class="btn btn-info btn-edit" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}"><i class="far fa-edit"></i></button>
             <button class="btn btn-danger btn btn-delete" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}"><i class="far fa-trash-alt"></i></button>
@@ -202,17 +173,17 @@
   </div>
 </div>
 
-<!--Modal comentario -->
-<div class="modal fade" id="modal_comentario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--Modal descripcion -->
+<div class="modal fade" id="modal_des" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="mimodalLabel_comentario">Modal title</h5>
+        <h5 class="modal-title" id="mimodalLabel_des">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body b_comentario">
+      <div class="modal-body b_des">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
@@ -222,5 +193,16 @@
   </div>
 </div>
 
+
+<!--Modal imagen -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="imagen">
+      
+      </div>
+    </div>
+  </div>
+</div>
 
 @stop

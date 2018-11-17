@@ -5,6 +5,19 @@
 /* colorea de rojo los campos incorrectos*/
 }
 
+.color{ /*color de los iconos*/
+    color: #f7b723;
+}
+
+.imagen { /*imagen a ocupar el ta tabla*/
+    background: url('../images/dragon.jpg');
+    width: 100%; 
+height: 450px;
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
 .inp{ /* textarea fijo */
     max-height: 100px;
     min-height: 100px;
@@ -53,12 +66,10 @@ a[data-toggle="collapse"] {
         margin-left: 0;
     }
 }
+
+
+
 /*estilo adicional*/
-
-/*
-    ADDITIONAL DEMO STYLE, NOT IMPORTANT TO MAKE THINGS WORK BUT TO MAKE IT A BIT NICER :)
-*/
-
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
@@ -77,18 +88,17 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 #sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
     background: #40E0D0;
     color: #000;
     transition: all 0.3s;
 }
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #00CED1;
+    background: #fc4a1a;
 }
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #00CED1;
+    border-bottom: 1px solid #fc4a1a;
 }
 #sidebar ul p {
     color: #fff;
@@ -99,8 +109,9 @@ a, a:hover, a:focus {
     font-size: 1.1em;
     display: block;
 }
+/* pasar mouse por menu*/
 #sidebar ul li a:hover {
-    color: #00CED1;
+    color: #fc4a1a;
     background: #fff;
 }
 #sidebar ul li.active>a, a[aria-expanded="true"] {

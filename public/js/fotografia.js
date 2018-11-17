@@ -4,50 +4,6 @@ $(document).ready(function() {
         event.preventDefault();
         validarCampos();
     });
-    //funcion select2 y traduccion lenguaje
-    $(".select").select2({
-        language: {
-            noResults: function() {
-                return "No hay resultado";
-            },
-            searching: function() {
-                return "Buscando..";
-            }
-        }
-    });
-    //traduccuion del dataTable
-    $('.mi-dataTable').DataTable({
-        "language": {
-            "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
-            "sZeroRecords": "No se encontraron resultados",
-            "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sSearch": "Buscar:",
-            "sUrl": "",
-            "sInfoThousands": ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            }
-        }
-    });
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    //funcion para validar campos
     function validarCampos() {
         var nombre = $('#nombre').val();
         var descripcion = $('#descripcion').val();
@@ -114,6 +70,9 @@ $(document).ready(function() {
             });
         }
     }
+
+
+
     //modal eliminar fotografia
     $('.btn-delete').click(function(event) {
         var id = $(this).data('id');
@@ -136,6 +95,8 @@ $(document).ready(function() {
         });
         $('#modal_eliminar').modal('show');
     });
+
+
     //modal editar foto
     $('.btn-edit').click(function(event) {
         var id = $(this).data('id');
@@ -155,9 +116,29 @@ $(document).ready(function() {
                   '<input type="text" class="form-control" id="nombre" placeholder="Nombre" value="' + datos['nombre'] + '">' +
                    '</div>' + '<div class="form-group col-md-12">' + '<label for="autor">autor</label>' + 
                    '<input type="text" class="form-control" id="autor" placeholder="autor" value="' + datos['autor'] + '">' + 
-                   '</div>' + '<div class="form-group col-md-12">' + '<label for="tipo_plano">tipo de plano</label>' + 
-                   '<input type="text" class="form-control" id="tipo_plano" placeholder="tipo_plano" value="' + datos['tipo_plano'] + '">' + 
-                   '</div>' + '<div class="form-group col-md-12">' + '<label for="archivo">archivo</label>' + 
+                   '</div>' + 
+
+
+                   '<div class="form-group col-md-12">' + 
+                '<label for="tipo_plano">tipo de plano</label>' +
+                    '<select class="form-control" id="tipo_plano" name="tipo_plano">'+
+                    '<option value="' + datos['tipo_plano'] + '">' + datos['tipo_plano'] +'</option>' +
+                    '<option value="Plano Figura">Plano Figura</option>'+
+                    ' <option value="Plano Americano o ¾">Plano Americano o ¾</option>'+
+                    '<option value="Plano Medio">Plano Medio</option>'+
+                    ' <option value="Plano Medio Corto">Plano Medio Corto</option>'+
+                    ' <option value="Plano Detalle">Plano Detalle</option>'+
+                    '<option value="Plano Contrapicado">Plano Contrapicado</option>'+
+                    '<option value="Plano Escorzo">Plano Escorzo</option>'+
+                    '<option value="Plano Perfil">Plano Perfil</option>'+
+                    '<option value="Plano Frontal">Plano Frontal</option>'+
+                        '</select>'+
+                        '</div>' + 
+
+
+
+                   '<div class="form-group col-md-12">' +
+                    '<label for="archivo">archivo ruta</label>' + 
                    '<input type="text" class="form-control" id="archivo" placeholder="archivo" value="' + datos['archivo'] + '">' + 
                    '</div>' + '</div>' + '</div>' + '<div class="form-group col-md-6">' + '<label for="descripcion">Descripcion</label>' + 
                    '<textarea class="form-control inp2" name="descripcion" id="descripcion" cols="30" rows="12">' + datos['descripcion'] + '</textarea><br>' + 
@@ -172,8 +153,8 @@ $(document).ready(function() {
         $('#modal_editar').modal('show');
     });
 
-    //modal eliminar fotografia
-    $('.btn-comentario').click(function(event) {
+    //modal descripcion fotografia
+    $('.btn-descripcion').click(function(event) {
         var id = $(this).data('id');
        var url = $(this).data('url');
 
@@ -185,18 +166,21 @@ $(document).ready(function() {
             },
             success: function(datos) { //remplazando los datos del modal con los de la base de datos
                 
-                $('#mimodalLabel_comentario').html("comentario de " + datos['nombre']); 
+                $('#mimodalLabel_des').html("descripcion de " + datos['nombre']); 
 
                 var html = '<div class="content">'+ datos['descripcion']+ '</div>';
 
                 
-                $('.b_comentario').html(html);
-                $('.modal_comentario').modal('show');
+                $('.b_des').html(html);
+                $('.modal_des').modal('show');
                   },
             error: function(error) {
                 console.log(error);
             }
         });
-         $('#modal_comentario').modal('show');
+         $('#modal_des').modal('show');
     });
+
+
+
 });
