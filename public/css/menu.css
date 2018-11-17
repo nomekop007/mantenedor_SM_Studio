@@ -5,9 +5,14 @@
 /* colorea de rojo los campos incorrectos*/
 }
 
-.inp{ /* itext area fijo */
+.inp{ /* textarea fijo */
     max-height: 100px;
     min-height: 100px;
+}
+
+.inp2{ /* itextarea model fijo */
+    max-height: 100px;
+    min-height: 295px;
 }
 
 .wrapper {

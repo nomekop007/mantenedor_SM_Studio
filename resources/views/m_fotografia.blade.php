@@ -86,7 +86,7 @@
                             Archivo
                         </label>
                      <div class="custom-file">
-                            <input type="file" class="custom-file-input " name="archivo" id="archivo">
+                            <input type="file" class="form-control-file" name="archivo" id="archivo">
                              <label class="custom-file-label" for="archivo">Choose file</label>
                      </div>
 
@@ -99,8 +99,8 @@
                        
                     </div>
                     
-                    <div class="form-group col-md-12">
-                        <button class="btn btn-primary" data-url="{{ route('create') }}" id="btnEnviar" type="submit">
+                    <div class="form-group col-md-1 text-center">
+                        <button class="btn btn-info" data-url="{{ route('create') }}" id="btnEnviar" type="submit">
                             Guardar
                         </button>
                     </div>
@@ -112,7 +112,7 @@
     </form>
 
 <!-- tabla -->
-<table class="table mi-dataTable">
+<table class="table mi-dataTable text-center">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">
@@ -133,7 +133,9 @@
                         <th scope="col">
                             archivo
                         </th>
-
+                        <th scope="col">
+                            Acciones
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -141,15 +143,84 @@
                     <tr>
                         <td>{{ $b->id }}</td>
                         <td>{{ $b->nombre }}</td>
-                        <td>{{ $b->descripcion }}</td>
+                        <td> 
+                    <a class="btn-comentario" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}">
+                        <i class="far fa-eye"></i></i>
+                    </a>
+                        </td>
                         <td>{{ $b->autor }}</td>
                         <td>{{ $b->tipo_plano }}</td>
-                        <td>{{ $b->archivo }}</td>  
+                        <td>{{ $b->archivo }}</td>
+                        <td>
+            <button class="btn btn-info btn-edit" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}"><i class="far fa-edit"></i></button>
+            <button class="btn btn-danger btn btn-delete" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getfoto') }}"><i class="far fa-trash-alt"></i></button>
+                        </td>  
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+                
+<!-- Modal de eliminar -->
+<div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mimodalLabel_eliminar">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body b_eliminar">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+
+<!-- Modal de editar -->
+<div class="modal fade" id="modal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mimodalLabel_editar">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body b_editar col-md-12">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal comentario -->
+<div class="modal fade" id="modal_comentario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mimodalLabel_comentario">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body b_comentario">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 @stop
