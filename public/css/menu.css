@@ -9,8 +9,7 @@
     color: #f7b723;
 }
 
-.imagen { /*imagen a ocupar el ta tabla*/
-    background: url('../images/dragon.jpg');
+.imagen img{ /*imagen a ocupar el ta tabla*/
     width: 100%; 
 height: 450px;
 background-size: cover;
@@ -18,15 +17,26 @@ background-repeat: no-repeat;
 
 }
 
+.video iframe { /*imagen a ocupar el ta tabla*/
+    width: 100%; 
+height: 450px;
+background-size: cover;
+background-repeat: no-repeat;
+}
 .inp{ /* textarea fijo */
     max-height: 100px;
     min-height: 100px;
 }
 
-.inp2{ /* itextarea model fijo */
+.inp2{ /* itextarea model foto fijo */
     max-height: 100px;
     min-height: 295px;
 }
+.inp3{ /* itextarea model video fijo */
+    max-height: 100px;
+    min-height: 210px;
+}
+
 
 .wrapper {
     display: flex;

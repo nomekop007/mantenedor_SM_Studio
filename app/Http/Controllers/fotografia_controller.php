@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-//declarar archivo drink
+//declarar archivo fotografia
 use App\fotografia;
 class fotografia_controller extends Controller
 {
@@ -35,8 +35,8 @@ class fotografia_controller extends Controller
     		return "error";
     	}
     	
-        //return fotografia::all();
-    	return view('plantilla');
+    
+    	return view('m_fotografia');
     }
 
 

@@ -11,6 +11,7 @@
                 <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" rel="stylesheet">
                 <!-- formas-->
                     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600" rel="stylesheet">
+                    <!--seguridad -->
                         <meta content="{{ csrf_token() }}" name="csrf-token">
                             <title>
                                 SM STUDIO
@@ -43,12 +44,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('m_video') }}">
                             VIDEOS
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('m_contacto') }}">
                             CONTACTO
                         </a>
                     </li>
@@ -70,7 +71,7 @@
 
 
 
-        <script src="{{ asset('js/jquery-3.3.1.min.js')}}">
+<script src="{{ asset('js/jquery-3.3.1.min.js')}}">
 </script>
 <script src="{{ asset('js/select2.min.js')}}">
 </script>
@@ -82,13 +83,16 @@
 </script>
  <script src="{{ asset('js/dataTables.min.js') }}">
  </script>
-<script src="{{ asset('js/fotografia.js')}}">
-</script>
 <script src="{{ asset('js/generico.js')}}">
 </script>
 <script src="{{ asset('js/menu.js')}}">
 </script>
-
+<script src="{{ asset('js/fotografia.js')}}">
+</script>
+<script src="{{ asset('js/video.js')}}">
+</script>
+<script src="{{ asset('js/contacto.js')}}">
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">

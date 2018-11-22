@@ -12,7 +12,7 @@
                 <div class="form row">
                     <div class="form-group col-md-6">
                         <label for="nombre">
-                            Nombre
+                            Nombre foto
                         </label>
                         <input class="form-control" id="nombre" name="nombre" placeholder="Nombre" type="text">
                         </input>
@@ -56,7 +56,7 @@
                         </label>
                      <div class="custom-file">
                             <input type="file" class="form-control-file" name="archivo" id="archivo">
-                             <label class="custom-file-label" for="archivo">Choose file</label>
+                             <label class="custom-file-label" for="archivo">ingrese archivo</label>
                      </div>
 
                     </div>
@@ -69,7 +69,7 @@
                     </div>
                     
                     <div class="form-group col-md-1 text-center">
-                        <button class="btn btn-info" data-url="{{ route('create') }}" id="btnEnviar" type="submit">
+                        <button class="btn btn-info" data-url="{{ route('createFoto') }}" id="btnEnviar" type="submit">
                             Guardar
                         </button>
                     </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
-        <button type="button" class="btn btn-info" data-dismiss="modal">editar</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">guardar cambios</button>
       </div>
     </div>
   </div>
@@ -199,10 +199,12 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="imagen">
-      
+      <img src="{{ asset('images/dragon.jpg') }}">
       </div>
     </div>
   </div>
 </div>
+
+
 
 @stop
