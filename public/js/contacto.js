@@ -6,13 +6,39 @@ $(document).ready(function() {
     });
 
 
+//scrips para limitar los caracteres numericos del input telefono
+var input =  document.getElementById('telefono');
+if (input !=null) {
+input.addEventListener('input',function(){
+  if (this.value.length > 9) 
+     this.value = this.value.slice(0,9); 
+});
+} 
+
+/* scrips para mostrar la lista de contacto
+var lista = $('#n1').val();
+if (lista != null) {
+     var arraydeLista = lista.split(",");
+var foo = arraydeLista.map(function(bar){
+  return '<li>'+bar+'</li>'
+})
+document.getElementById("foo").innerHTML = foo;
+}*/
+
+
+
+
+
+
+            //validar y crear
     function validarCampos() {
 
         var telefono = $('#telefono').val();
-
         var correo = $('#correo').val();
         var direccion = $('#direccion').val();
         var redSocial = $('#redes').val();
+
+        
         //valida cada campo con if
         if (telefono.length == 0 || correo.length == 0 || direccion.length == 0) {
             if (telefono.length == 0) {
@@ -47,7 +73,7 @@ $(document).ready(function() {
                     telefono: telefono,
                     correo: correo,
                     direccion: direccion,
-                    redSocial: redSocial 
+                    redSocial : redSocial.toString() 
                 },
                 success: function(datos) {
                     console.log(datos);
@@ -92,7 +118,8 @@ $(document).ready(function() {
 
 
 
-   //modal editar video
+
+   //modal editar contacto
     $('.btn-edit3').click(function(event) {
         var id = $(this).data('id');
         var url = $(this).data('url');
@@ -119,7 +146,7 @@ $(document).ready(function() {
                 '<div class="form row">'+
                     '<div class="form-group col-md-6">'+
                         '<label for="telefono"> Telefono</label>'+
-                        '<input class="form-control" id="telefono" name="telefono" placeholder="solo numeros" type="text" value="' + datos['telefono'] + '">'+
+                        '<input class="form-control" id="telefono2" name="telefono" placeholder="solo numeros" type="text" value="' + datos['telefono'] + '">'+
                         '</input>'+
                     '</div>'+
 
@@ -127,20 +154,20 @@ $(document).ready(function() {
                     '<div class="form-group col-md-6">'+
                        '<label for="correo electronico"> Correo electronico'+
                         '</label>'+
-                        '<input class="form-control" id="correo" name="correo electronico" placeholder="correo electronico" type="text" value="' + datos['correo'] + '">'+
+                        '<input class="form-control" id="correo2" name="correo electronico" placeholder="correo electronico" type="text" value="' + datos['correo'] + '">'+
                         '</input>'+
                     '</div>'+
 
                         '<div class="form-group col-md-6">'+
                         '<label for="direccion">Direccion'+
                         '</label>'+
-                        '<input class="form-control" id="direccion" name="direccion" placeholder="direccion" type="text" value="' + datos['direccion'] + '">'+
+                        '<input class="form-control" id="direccion2" name="direccion" placeholder="direccion" type="text" value="' + datos['direccion'] + '">'+
                         '</input>'+
                     '</div>'+
 
               '<div class="form-group col-md-6">'+
                         '<label for="redes">Redes sociales</label><br>'+
-                         '<select class=" select3 form-control-plaintext" id="redes" name="redes">'+
+                         '<select class=" select3 form-control-plaintext" id="redes2" name="redes">'+
                             '<option value="' + m + '">' + m + '</option>'+
                             '<option value="Facebook">Facebook</option>'+
                             '<option value="Instagram">Instagram</option>'+
@@ -170,5 +197,45 @@ $(document).ready(function() {
     });
 
 
+
+
+
+        /* actualizar contacto
+    $('#editar').click(function(event) {
+
+             
+        var telefono2 = $('#telefono2').val();
+        var correo2 = $('#correo2').val();
+        var direccion2 = $('#direccion2').val();
+        var redSocial2 = $('#redes2').val();
+
+           var id = $(this).data('id');
+             var url = $('#editar').data('url');
+    
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                     id: id,
+                    telefono: telefono2,
+                    correo: correo2,
+                    direccion: direccion2,
+                    redSocial: redSocial2
+                },
+                success: function(datos) {
+                    console.log(id);
+                    if (datos == "ok") {
+                        location.reload();
+                          alert("editado");
+                    } else {
+                         alert("error algo paso");
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+     });
+   */
 
 });

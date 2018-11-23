@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-            <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+            <link href="{{ asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css">
              <link href="{{ asset('css/dataTables.min.css') }}" rel="stylesheet">
              <link href="{{ asset('css/select2-bootstrap.css') }}" rel="stylesheet">
              <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
@@ -16,19 +16,8 @@
                             <title>
                                 SM STUDIO
                             </title>
-                            <!-- Our Custom CSS -->
-                            
-                                <!-- Font Awesome JS -->
-<!--
-                                <script crossorigin="anonymous" defer="" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js">
-                                </script>
-                            </link>
-                            <link href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" rel="stylesheet">
-                            </link>
--->
-
     </head>
-    <body>
+    <body class="plomo">
         <div class="wrapper">
             <!-- menu vertical -->
             <nav id="sidebar">
@@ -57,7 +46,7 @@
             </nav>
             <!-- contenido ventanas -->
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-narnaja">
                     <div class="container-fluid">
                         <button class="btn btn-info" id="sidebarCollapse" type="button">
                             <i class="fas fa-bars"></i>
@@ -93,10 +82,9 @@
 </script>
 <script src="{{ asset('js/contacto.js')}}">
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+<script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}">
 </script>
+
 
     </body>
 </html>

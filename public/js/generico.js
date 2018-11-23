@@ -4,10 +4,13 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+
     //funcion select2 para configurarlo
     $(".select").select2({
-        placeholder: "Seleccione un plano",
-        allowClear: true
+        placeholder: "Seleccione plano/s",
+        allowClear: true,
+        maximumSelectionSize : 2
     });
     $(".select2").select2({
         placeholder: "Seleccione formato",
@@ -17,6 +20,8 @@ $(document).ready(function() {
         placeholder: "opcional",
         allowClear: true
     });
+
+    
     //traduccion del dataTable
     $('.mi-dataTable').DataTable({
         "language": {
@@ -88,4 +93,36 @@ $(document).ready(function() {
         });
         $('#modal_eliminar').modal('show');
     });
+
+
+
+            //elimar objetos
+    $('#eliminar').click(function(event) {
+           var id = $(this).data('id');
+             var url = $(this).data('url');
+    
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                     id: id
+                },
+                success: function(datos) {
+              
+                    if (datos == "ok") {
+                        location.reload();
+                          alert("eliminado");
+                    } else {
+                         alert("error algo paso");
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+    });
+
+
+
+
 });

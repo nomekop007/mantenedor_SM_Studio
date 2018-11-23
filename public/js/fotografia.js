@@ -52,7 +52,7 @@ $(document).ready(function() {
                 data: {
                     nombre: nombre,
                     descripcion: descripcion,
-                    tipo_plano: tipo_plano,
+                    tipo_plano: tipo_plano.toString(),
                     autor: autor,
                     archivo: archivo
                 },

@@ -46,4 +46,17 @@ class fotografia_controller extends Controller
     	$foto = fotografia::find($id);
     	return $foto;
     }
+
+
+     public function delete(request $request) //elimninar foto
+    {
+        $id = base64_decode($request->id);
+        $fotografia = fotografia::find($id);
+        
+        if ($fotografia->delete()) {
+            return "ok";
+        } else{
+            return "error";
+        }
+    }
 }

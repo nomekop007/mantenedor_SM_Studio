@@ -45,4 +45,17 @@ class video_controller extends Controller
     	$video = video::find($id);
     	return $video;
     }
+
+
+     public function delete(request $request) //eliminar video
+    {
+        $id = base64_decode($request->id);
+        $video = video::find($id);
+        
+        if ($video->delete()) {
+            return "ok";
+        } else{
+            return "error";
+        }
+    }
 }

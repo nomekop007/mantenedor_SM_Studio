@@ -28,8 +28,9 @@
                         <label for="tipo_plano2">
                             Tipo de plano
                         </label><br>
-                      <select class=" select form-control-plaintext" id="tipo_plano2" name="tipo_plano2">
+                      <select class=" select js-example-basic-multiple js-states form-control" id="tipo_plano2" name="tipo_plano2" multiple="multiple">
                             <option></option>
+                            <optgroup label="Planos primarios">
                             <option value="Plano General">Plano General</option>
                             <option value="Plano Figura">Plano Figura</option>
                             <option value="Plano Americano o ¾">Plano Americano o ¾</option>
@@ -38,14 +39,21 @@
                             <option value="Primer Plano">Primer Plano</option>
                             <option value="Primerísimo Primer Plano">Primerísimo Primer Plano</option>
                             <option value="Plano Detalle">Plano Detalle</option>
+                            </optgroup>
+
+                            <optgroup label="Planos secundarios">
                             <option value="Plano Cenital">Plano Cenital</option>
                             <option value="Plano Picado">Plano Picado</option>
-                            <option value="Plano Nadir">Plano Nadir</option>
                             <option value="Plano Contrapicado">Plano Contrapicado</option>
+                            <option value="Plano Nadir">Plano Nadir</option>
+                            <option value="Plano Dorsal">Plano Dorsal</option>
                             <option value="Plano Escorzo">Plano Escorzo</option>
                             <option value="Plano Perfil">Plano Perfil</option>
                             <option value="Plano Frontal">Plano Frontal</option>
-                            <option value="Plano Holandés">Plano Holandés</option>
+                            <option value="Plano Holandés">Plano Holandés</option>                         
+                            </optgroup>
+
+
                         </select>
                     </div>
 
@@ -80,11 +88,11 @@
                         <label for="descripcion2">
                             descripcion
                         </label>
-                         <textarea class="form-control inp" cols="30" id="descripcion2" name="descripcion2" rows="5"  placeholder="descripcion"></textarea>
+                         <textarea class="form-control inp" cols="30" id="descripcion2" name="descripcion2" rows="5" maxlength="190" placeholder="descripcion"></textarea>
                     </div>
                     
                     <div class="form-group col-md-1 text-center">
-                        <button class="btn btn-info" data-url="{{ route('createVideo') }}" id="btnEnviar2" type="submit">
+                        <button class="btn btn-info bg-amarillo" data-url="{{ route('createVideo') }}" id="btnEnviar2" type="submit">
                             Guardar
                         </button>
                     </div>
@@ -133,7 +141,7 @@
                         <td>{{ $b->formato }}</td>
                         <td> 
                     <a class="btn-descripcion" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getvideo') }}">
-                        <i class="far fa-eye"></i></i>
+                        <i class="far fa-eye color"></i></i>
                     </a>
                         </td>
                         <td>{{ $b->autor }}</td>
@@ -142,8 +150,29 @@
                           <a data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-file-image color"></i></a>
                         </td>
                         <td>
-            <button class="btn btn-info btn-edit2" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getvideo') }}"><i class="far fa-edit"></i></button>
-            <button class="btn btn-danger btn btn-delete" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getvideo') }}"><i class="far fa-trash-alt"></i></button>
+                <button class="btn btn-info btn-edit2" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getvideo') }}"><i class="far fa-edit"></i></button>
+                <button class="btn btn-danger btn btn-delete" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('getvideo') }}"><i class="far fa-trash-alt"></i></button>
+
+
+                        <!-- Modal de eliminar -->
+                        <div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="mimodalLabel_eliminar">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body b_eliminar">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="eliminar" data-id="{{ base64_encode($b->id) }}" data-url="{{ route('DeleteVideo') }}">eliminar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         </td>  
                     </tr>
                     @endforeach
@@ -173,14 +202,15 @@
 </div>
 
 
-<!--Modal imagen -->
+<!--Modal video -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="video">
-        <!--
-<iframe width="420" height="315" src="{{ asset('videos/dg.mp4') }}" frameborder="0" allowfullscreen="allowfullscreen"></iframe> -->
-        </div>
+      <div class="video"> 
+    <video controls width=760> 
+        <source src="{{ asset('videos/dg.mp4') }}" type="video/mp4"> 
+    </video> 
+      </div>
     </div>
   </div>
 </div>
@@ -206,23 +236,5 @@
   </div>
 </div>
 
-<!-- Modal de eliminar -->
-<div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="mimodalLabel_eliminar">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body b_eliminar">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 @stop
