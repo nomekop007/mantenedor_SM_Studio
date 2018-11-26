@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-//declarar archivo drink
+//declarar archivo fotografia
 use App\fotografia;
 class fotografia_controller extends Controller
 {
@@ -35,8 +35,8 @@ class fotografia_controller extends Controller
     		return "error";
     	}
     	
-        //return fotografia::all();
-    	return view('plantilla');
+    
+    	return view('m_fotografia');
     }
 
 
@@ -45,5 +45,18 @@ class fotografia_controller extends Controller
     	$id = base64_decode($request->id);
     	$foto = fotografia::find($id);
     	return $foto;
+    }
+
+
+     public function delete(request $request) //elimninar foto
+    {
+        $id = base64_decode($request->id);
+        $fotografia = fotografia::find($id);
+        
+        if ($fotografia->delete()) {
+            return "ok";
+        } else{
+            return "error";
+        }
     }
 }
