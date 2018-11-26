@@ -19,7 +19,7 @@ class TableContacto extends Migration
             $table->integer('telefono');
             $table->String('correo');
             $table->String('direccion');
-            $table->String('redSocial');
+            $table->String('redSocial')->nullable();
             $table->timestamps();
         });
     }

@@ -52,7 +52,7 @@ $(document).ready(function() {
                 data: {
                     nombre: nombre,
                     descripcion: descripcion,
-                    tipo_plano: tipo_plano,
+                    tipo_plano: tipo_plano.toString(),
                     autor: autor,
                     archivo: archivo
                 },
@@ -72,29 +72,6 @@ $(document).ready(function() {
     }
 
 
-
-    //modal eliminar fotografia
-    $('.btn-delete').click(function(event) {
-        var id = $(this).data('id');
-        var url = $(this).data('url');
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {
-                id: id
-            },
-            success: function(datos) { //remplazando los datos del modal con los de la base de datos
-                $('#mimodalLabel_eliminar').html("Eliminar  " + datos['nombre']);
-                var html = ' ¿esta seguro de eliminar esta foto?';
-                $('.b_eliminar').html(html);
-                $('.modal_eliminar').modal('show');
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-        $('#modal_eliminar').modal('show');
-    });
 
 
     //modal editar foto
@@ -151,34 +128,6 @@ $(document).ready(function() {
             }
         });
         $('#modal_editar').modal('show');
-    });
-
-    //modal descripcion fotografia
-    $('.btn-descripcion').click(function(event) {
-        var id = $(this).data('id');
-       var url = $(this).data('url');
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {
-                id: id
-            },
-            success: function(datos) { //remplazando los datos del modal con los de la base de datos
-                
-                $('#mimodalLabel_des').html("descripcion de " + datos['nombre']); 
-
-                var html = '<div class="content">'+ datos['descripcion']+ '</div>';
-
-                
-                $('.b_des').html(html);
-                $('.modal_des').modal('show');
-                  },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-         $('#modal_des').modal('show');
     });
 
 
